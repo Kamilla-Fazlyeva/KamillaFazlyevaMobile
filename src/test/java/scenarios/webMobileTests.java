@@ -20,13 +20,12 @@ public class webMobileTests extends BaseTest {
 
         // Make sure that page has been loaded completely
         new WebDriverWait(getDriver(), 20).until(
-                wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
-        );
+                wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
         // type in the search field
         getPageObject().getWelement("searchField").sendKeys(getProperties().getProperty("search"));
         // click search button
         getPageObject().getWelement("searchBtn").click();
         // check that results are not empty
-        assertTrue(getPageObject().getWelement("searchResults").isDisplayed());
+        assertTrue(!getPageObject().getWelements("searchResults").isEmpty());
     }
 }

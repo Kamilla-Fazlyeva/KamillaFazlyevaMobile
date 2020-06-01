@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="EPAM mobile cloud Web testing Suite">
     <parameter name="appType" value="web"></parameter>
-  <!-- <parameter name="udid" value="8ee5b10219a4317d6a122ed7f5599f550357f4ec"></parameter> -->
+    <parameter name="udid" value="bd13c2ec28101bd1553eedc83ad2aa067610e324"></parameter>
     <parameter name="platformName" value="iOS"></parameter>
     <parameter name="browserName" value="Safari"></parameter>
     <test name="iOS Web tests">
