@@ -2,11 +2,13 @@ package scenarios;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import setup.BaseTest;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.testng.Assert.*;
 import static utils.TestProperties.getProperties;
@@ -27,6 +29,6 @@ public class webMobileTests extends BaseTest {
         // click search button
         getPageObject().getWelement("searchBtn").click();
         // check that results are not empty
-        assertTrue(getPageObject().getWelement("searchResults").isDisplayed());
+        assertTrue(!getPageObject().getWelements("searchResults").isEmpty());
     }
 }
