@@ -23,10 +23,10 @@ public class webMobileTests extends BaseTest {
                 wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
         );
         // type in the search field
-        getDriver().findElement(By.xpath("//input[@name='q']")).sendKeys(getProperties().getProperty("search"));
+        getPageObject().getWelement("searchField").sendKeys(getProperties().getProperty("search"));
         // click search button
-        getDriver().findElement(By.xpath("//button[@class='Tg7LZd']")).click();
+        getPageObject().getWelement("searchBtn").click();
         // check that results are not empty
-        assertTrue(getDriver().findElement(By.cssSelector("#rso > div")).isDisplayed());
+        assertTrue(getPageObject().getWelement("searchResults").isDisplayed());
     }
 }

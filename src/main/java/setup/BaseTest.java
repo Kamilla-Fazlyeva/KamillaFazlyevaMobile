@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest implements IDriver {
 
     private static AppiumDriver appiumDriver; // singleton
-    IPageObject pageObject;
+    private static IPageObject pageObject;
 
     @Override
     public AppiumDriver getDriver() {
