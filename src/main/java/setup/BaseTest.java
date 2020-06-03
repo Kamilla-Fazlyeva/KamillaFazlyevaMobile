@@ -1,19 +1,24 @@
 package setup;
 
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import pageObjects.PageObject;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest implements IDriver {
 
     private static AppiumDriver appiumDriver; // singleton
     private static IPageObject pageObject;
+    private static WebDriverWait driverWait;
 
     @Override
     public AppiumDriver getDriver() {
@@ -69,10 +74,19 @@ public class BaseTest implements IDriver {
         }
         // Timeouts tuning
         appiumDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driverWait = new WebDriverWait(appiumDriver, 10);
     }
 
     private void setPageObject(String appType, AppiumDriver appiumDriver) throws Exception {
         pageObject = new PageObject(appType, appiumDriver);
+    }
+
+    protected List<WebElement> waitVisibilityOfElements(List<WebElement> webElements) {
+        return driverWait.until(ExpectedConditions.visibilityOfAllElements(webElements));
+    }
+
+    protected WebElement waitVisibilityOfElements(WebElement webElement) {
+        return driverWait.until(ExpectedConditions.visibilityOf(webElement));
     }
 }
 
